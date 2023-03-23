@@ -1,23 +1,23 @@
-// console.log('helloword');
+console.log('helloword');
 
 
-// let a = 30;
-// let b = 9;
+let o = 30;
+let p = 9;
 
-// console.log(a + b)
-// console.log(a - b)
-// console.log(a * b)
-// console.log(a / b)
-// console.log(a % b)
+console.log(o + p)
+console.log(o - p)
+console.log(o * p)
+console.log(o / p)
+console.log(o % p)
 
-// let postfix = 5;
-// console.log(postfix++);
-// /* output: 5 */
-// console.log(postfix);
-// /* output: 6 */
+let postfix = 5;
+console.log(postfix++);
+/* output: 5 */
+console.log(postfix);
+/* output: 6 */
 
-// let prefix = 5;
-// console.log(++prefix);
+let prefix = 5;
+console.log(++prefix);
 
 const bigNumber = 1234567n;
 const myInt = 1234567890123456789012345678901234567890;
@@ -52,6 +52,19 @@ console.log(x);
 ///perbandingan
 console.log(aString == aNumber)
 console.log(aString === aNumber)
+//if and else
+let language = "French";
+let greeting = "Selamat Pagi"
+
+if(language === "English") {
+    greeting = "Good Morning!";
+} else if(language === "French") {
+    greeting = "Bonjour!"
+} else if(language === "Japanese") {
+    greeting = "Ohayou Gozaimasu!"
+}
+
+
 
 /* AND operator */
 console.log(k < 15 && i > 10); 
@@ -62,3 +75,4 @@ console.log(a > 15 || b > 10);
 /* NOT operator */
 console.log(!(a < 15));
 console.log(!(a < 15 && b > 10));
+console.log(greeting);
