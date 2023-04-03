@@ -160,8 +160,8 @@ console.log(numberSet);
 const visitsCountMap = new Map(); // Menyimpan daftar user
 
 function countUser(user) {
-  let count = visitsCountMap.get(user) || 0;
-  visitsCountMap.set(user, count + 1);
+    let count = visitsCountMap.get(user) || 0;
+    visitsCountMap.set(user, count + 1);
 }
 
 let jonas = { name: "Jomblo" };
@@ -170,8 +170,130 @@ countUser(jonas);  // Menambahkan user "Jonas"
 jonas = null;  // Data object "Jonas" dihapus
 
 // delay dibutuhkan untuk menunggu garbage collector bekerja
-setTimeout(function() {
-  console.log(visitsCountMap);
+setTimeout(function () {
+    console.log(visitsCountMap);
 }, 10000)
 
-////
+//// function parameter
+const user = {
+    id: 24,
+    displayName: 'kiki',
+    fullName: 'kiki bahrul',
+};
+
+function introduce({ displayName, fullName }) {
+    console.log(`${displayName} is ${fullName}`);
+}
+
+introduce(user);
+
+///Function
+function minimal(f, h) {
+    return Math.min(f, h);
+}
+
+function power(f, h) {
+    return Math.pow(f, h);
+}
+
+module.exports = { minimal, power };
+
+console.log(minimal(3, 3));
+console.log(power(4, 0.5));
+
+///Constuctor
+class Car {
+    constructor(brand, color, maxSpeed) {
+        this.brand = brand;
+        this.color = color;
+        this.maxSpeed = maxSpeed;
+        // Set a random chassis number
+        this.chassisNumber = `${brand}-${Math.floor(Math.random() * 1000) + 1}`;
+    }
+}
+
+const car1 = new Car('BMW', 'purple', 200);
+const car2 = new Car('Audi', 'Aqua blue', 220);
+const car3 = new Car('BMW', 'black Doff', 250);
+console.log(car1);
+console.log(car2);
+console.log(car3);
+
+///geter dan setter
+class Mobil {
+    constructor(brand, color, maxSpeed) {
+      this.brand = brand;
+      this.color = color;
+      this.maxSpeed = maxSpeed;
+      this.chassisNumber = `${brand}-${Math.floor(Math.random() * 1000)}`;
+    }
+  }
+   
+  const mobil = new Mobil('BMW', 'red', 200);
+  mobil.chassisNumber = 'BMW-1.0';
+   
+  console.log(mobil)
+
+
+
+///getter dan setter
+class Person {
+    constructor(firstName, lastName) {
+     this.firstName = firstName;
+     this.lastName = lastName;
+   }
+   
+    get fullName() {
+      return `${this.firstName} ${this.lastName}`;
+    }
+   
+    set fullName(fullName) {
+      const [firstName, lastName] = fullName.split(' ');
+      this.firstName = firstName;
+      this.lastName = lastName;
+    }
+  }
+   
+  const person = new Person('John', 'Doe');
+  console.log(person);
+  console.log(person.fullName);
+   
+  person.fullName = 'Fulan Fulanah';
+  console.log(person);
+  console.log(person.fullName);
+
+////super
+
+class MailService {
+  constructor(sender) {
+    this.sender = sender;
+  }
+ 
+  sendMessage(message, receiver) {
+    console.log(`${this.sender} sent ${message} to ${receiver}`);
+  }
+
+}
+
+class WhatsAppService extends MailService {
+  constructor(sender, isBusiness) {
+    super(sender);
+    this.isBusiness = isBusiness;
+  }
+  
+ 
+  // Overriding method
+  sendMessage(message, receiver) {
+    // memanggil method sendMessage pada superclass
+    super.sendMessage(message, receiver);
+
+    console.log('Pesan ini dikirim melalui via WhatsApp');
+  }
+}
+
+
+const mailService = new MailService('someSender');
+const whatsappService = new WhatsAppService('+6281234567890', true);
+
+mailService.sendMessage('Hallo Teman, apa kabar?', 'someReceiver');
+whatsappService.sendMessage('Hallo Teman, apa kabar?', '+6289876543210');
